@@ -1,0 +1,24 @@
+<!-- <pre><code>{{ applicantsEmployees$() | async | json }}</code></pre> -->
+
+<h1>Lista de usuarios</h1>
+<label for="userType">Select user type:</label>
+<select id="userType" (change)="onSelectionChange($event)">
+  <option value="" selected>Select an option</option>
+  <option value="demandante">Demandante</option>
+  <option value="empleado">Empleado</option>
+</select>
+
+<button (click)="onCreateUser()">Crear usuario</button>
+@if (applicantsEmployees$() | async; as applicantsEmployees) {
+    <ul>
+        @for (appEmp of applicantsEmployees; track $index) {
+        <li>
+            {{ appEmp.personalData.firstName }} {{ appEmp.personalData.lastName1 }}
+            <button (click)="onView(appEmp)">Ver</button>
+            <button (click)="onEdit(appEmp)">Editar</button>
+            <button (click)="onDelete(appEmp)">Borrar</button>
+        </li>
+        }
+    </ul>
+}
+  
